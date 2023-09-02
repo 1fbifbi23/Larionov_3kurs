@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, url_for
 app = Flask(__name__)
 
 @app.route("/") 
@@ -51,3 +51,36 @@ def menu():
     </body>
 </html>
 """
+@app.route('/lab1/oak')
+def oak():
+      return '''
+<!doctype html>
+<html>
+    <body>
+        <h1>Дуб</h1>
+        <img src="''' +url_for('static', filename='oak.jpg') + '''">
+    </body>
+</html>
+'''
+@app.route("/lab1/student")
+def student():
+      return f'''
+<!doctype html>
+<html>
+    <head>
+        <title>Ларионов Даниил Сергеевич, Лаб1</title>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 1
+        </header>
+
+        <h1>НГТУ</h1>
+        <img src="{url_for('static', filename='NSTU.jpg')}">
+
+        <footer>
+            &copy; Даниил Ларионов, ФБИ-12, 3 курс, 2023
+        </footer>
+    </body>
+</html>
+'''
